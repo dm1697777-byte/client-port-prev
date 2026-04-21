@@ -1,1 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ella Reyes | Creative Freelancer & VA Portfolio</title>
+<meta name="description" content="Ella Reyes — Creative freelancer and virtual assistant specializing in graphic design, social media management, branding, and administrative support. Hire me for your next project.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: linear-gradient(135deg, #4f46e5, #9333ea, #f43f5e);
+  --text: #fff;
+  --card: rgba(255,255,255,0.12);
+  --card-hover: rgba(255,255,255,0.18);
+  --accent: #f43f5e;
+  --accent2: #9333ea;
+}
+.dark {
+  --bg: #0f172a;
+  --text: #e2e8f0;
+  --card: rgba(255,255,255,0.06);
+  --card-hover: rgba(255,255,255,0.1);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.4s, color 0.4s;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
 
+/* Floating background shapes */
+.bg-shape {
+  position: fixed;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  filter: blur(80px);
+  animation: float 12s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+.bg1 { width: 300px; height: 300px; top: 5%; left: 5%; }
+.bg2 { width: 250px; height: 250px; bottom: 10%; right: 5%; animation-delay: -4s; }
+.bg3 { width: 200px; height: 200px; top: 50%; left: 60%; animation-delay: -8s; }
+@keyframes float {
+  from { transform: translateY(0) scale(1); }
+  to { transform: translateY(-50px) scale(1.05); }
+}
+
+/* Layout */
+.container { max-width: 900px; margin: 0 auto; padding: 20px; position: relative; z-index: 1; }
+
+/* Dark toggle */
+.toggle-btn {
+  position: fixed; top: 20px; right: 20px;
+  background: rgba(255,255,255,0.2); backdrop-filter: blur(10px);
+  border: none; color: var(--text);
+  width: 44px; height: 44px; border-radius: 50%;
+  font-size: 1.2rem; cursor: pointer; z-index: 10;
+  transition: background 0.3s;
+}
+.toggle-btn:hover { background: rgba(255,255,255,0.3); }
+
+/* Header */
+header {
+  text-align: center;
+  padding: 60px 20px 40px;
+}
+.profile-img {
+  width: 140px; height: 140px;
+  border-radius: 50%; object-fit: cover;
+  border: 4px solid rgba(255,255,255,0.4);
+  margin-bottom: 18px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+header h1 {
+  font-size: 2.2rem; font-weight: 700;
+  margin-bottom: 6px;
+}
+header .tagline {
+  font-size: 1.1rem; font-weight: 300;
+  opacity: 0.9;
+}
+.header-cta {
+  display: inline-block; margin-top: 20px;
+  padding: 12px 32px; border-radius: 30px;
+  background: white; color: #4f46e5;
+  font-weight: 600; text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.header-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+/* Glass cards */
+.card {
+  background: var(--card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 20px;
+  padding: 28px;
+  margin: 20px 0;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: transform 0.3s, background 0.3s;
+}
+.card:hover { transform: translateY(-4px); background: var(--card-hover); }
+.card h2 {
+  font-size: 1.3rem; font-weight: 600;
+  margin-bottom: 14px;
+}
+
+/* About */
+.about-text { line-height: 1.7; opacity: 0.92; }
+
+/* Skills */
+.skills-grid {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.skill-tag {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 25px;
+  background: rgba(255,255,255,0.15);
+  font-size: 0.9rem; font-weight: 500;
+  transition: background 0.2s;
+}
+.skill-tag:hover { background: rgba(255,255,255,0.25); }
+
+/* Services */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+.service-item {
+  background: rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+.service-item:hover { transform: translateY(-3px); }
+.service-icon { font-size: 2rem; margin-bottom: 10px; }
+.service-item h3 { font-size: 1rem; margin-bottom: 6px; }
+.service-item p { font-size: 0.85rem; opacity: 0.8; }
+
+/* Stats */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 14px;
+}
+.stat-item {
+  background: rgba(255,255,255,0.12);
+  border-radius: 14px;
+  padding: 18px 12px;
+  text-align: center;
+}
+.stat-number { font-size: 1.8rem; font-weight: 700; }
+.stat-label { font-size: 0.85rem; opacity: 0.8; margin-top: 4px; }
+
+/* Portfolio */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+.portfolio-item {
+  background: rgba(255,255,255,0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+.portfolio-item:hover { transform: translateY(-4px); }
+.portfolio-thumb {
+  width: 100%; height: 160px;
+  object-fit: cover;
+  display: block;
+}
+.portfolio-info { padding: 14px; }
+.portfolio-info h3 { font-size: 0.95rem; margin-bottom: 4px; }
+.portfolio-info p { font-size: 0.8rem; opacity: 0.7; }
+
+/* Testimonials */
+.testimonial {
+  background: rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 14px;
+}
+.testimonial p { font-style: italic; line-height: 1.6; opacity: 0.9; margin-bottom: 10px; }
+.testimonial .author { font-weight: 600; font-size: 0.9rem; }
+.testimonial .role { font-size: 0.8rem; opacity: 0.7; }
+
+/* Form */
+.form-group { margin-bottom: 14px; }
+.form-group label {
+  display: block; font-size: 0.85rem;
+  font-weight: 500; margin-bottom: 6px; opacity: 0.9;
+}
+.form-input, .form-textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.08);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  transition: border 0.2s, background 0.2s;
+  outline: none;
+}
+.form-input:focus, .form-textarea:focus {
+  border-color: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.12);
+}
+.form-input::placeholder, .form-textarea::placeholder { color: rgba(255,255,255,0.4); }
+.form-textarea { resize: vertical; min-height: 100px; }
+.form-select {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.08);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='rgba(255,255,255,0.6)' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+}
+.form-select option { background: #1e293b; color: #e2e8f0; }
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #f43f5e, #9333ea);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-top: 6px;
+}
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(244,63,94,0.4);
+}
+.submit-btn:disabled {
+  opacity: 0.6; cursor: not-allowed; transform: none;
+}
+
+/* Success message */
+.success-msg {
+  display: none;
+  text-align: center;
+  padding: 24px;
+}
+.success-msg.show { display: block; }
+.success-icon { font-size: 3rem; margin-bottom: 12px; }
+.success-msg h3 { font-size: 1.2rem; margin-bottom: 8px; }
+.success-msg p { opacity: 0.8; }
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 40px 20px 30px;
+  opacity: 0.7;
+  font-size: 0.85rem;
+}
+.social-links { margin-bottom: 14px; }
+.social-links a {
+  display: inline-block;
+  width: 40px; height: 40px; line-height: 40px;
+  margin: 0 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  color: var(--text);
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: background 0.2s;
+}
+.social-links a:hover { background: rgba(255,255,255,0.3); }
+
+/* Nav */
+nav {
+  position: fixed; top: 20px; left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 30px;
+  padding: 8px 16px;
+  z-index: 10;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+nav a {
+  color: var(--text);
+  text-decoration: none;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 20px;
+  transition: background 0.2s;
+  display: inline-block;
+}
+nav a:hover { background: rgba(255,255,255,0.15); }
+
+/* Responsive */
+@media (max-width: 600px) {
+  header h1 { font-size: 1.7rem; }
+  nav { display: none; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .services-grid { grid-template-columns: 1fr; }
+  .portfolio-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="bg-shape bg1"></div>
+<div class="bg-shape bg2"></div>
+<div class="bg-shape bg3"></div>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#portfolio">Work</a>
+  <a href="#contact">Hire Me</a>
+</nav>
+
+<button class="toggle-btn" onclick="toggleDark()" aria-label="Toggle dark mode">&#127769;</button>
+
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=280&h=280&fit=crop&crop=face" alt="Ella Reyes" class="profile-img">
+    <h1>Ella Reyes</h1>
+    <p class="tagline">Creative Freelancer &bull; Virtual Assistant &bull; Designer</p>
+    <a href="#contact" class="header-cta">Work With Me</a>
+  </header>
+
+  <!-- About -->
+  <section id="about" class="card">
+    <h2>About Me</h2>
+    <p class="about-text">Hi there! I'm a versatile freelancer and virtual assistant who helps entrepreneurs and startups bring their vision to life. From designing eye-catching visuals and managing social media to organizing schedules and handling customer communications — I bring creativity and efficiency to every project. With 5+ years of experience working with remote teams worldwide, I deliver quality work on time, every time.</p>
+  </section>
+
+  <!-- Skills -->
+  <section class="card">
+    <h2>Skills &amp; Expertise</h2>
+    <div class="skills-grid">
+      <span class="skill-tag">Graphic Design</span>
+      <span class="skill-tag">Social Media Management</span>
+      <span class="skill-tag">Branding &amp; Identity</span>
+      <span class="skill-tag">Content Creation</span>
+      <span class="skill-tag">Email Management</span>
+      <span class="skill-tag">Calendar Scheduling</span>
+      <span class="skill-tag">Customer Support</span>
+      <span class="skill-tag">Data Entry</span>
+      <span class="skill-tag">Canva / Figma</span>
+      <span class="skill-tag">WordPress</span>
+      <span class="skill-tag">Project Management</span>
+      <span class="skill-tag">Research</span>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="card">
+    <h2>Services</h2>
+    <div class="services-grid">
+      <div class="service-item">
+        <div class="service-icon">&#127912;</div>
+        <h3>Graphic Design</h3>
+        <p>Logos, social media graphics, presentations, and marketing materials.</p>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">&#128241;</div>
+        <h3>Social Media</h3>
+        <p>Content planning, scheduling, engagement, and analytics reporting.</p>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">&#128188;</div>
+        <h3>Admin Support</h3>
+        <p>Email management, calendar scheduling, data entry, and file organization.</p>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">&#128172;</div>
+        <h3>Customer Service</h3>
+        <p>Inbox management, live chat support, and client communications.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="card">
+    <h2>Track Record</h2>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number">50+</div>
+        <div class="stat-label">Projects Completed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">30+</div>
+        <div class="stat-label">Happy Clients</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">5+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">4.9</div>
+        <div class="stat-label">Avg. Rating</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="portfolio" class="card">
+    <h2>Featured Work</h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=440&h=320&fit=crop" alt="Brand Identity Project" class="portfolio-thumb">
+        <div class="portfolio-info">
+          <h3>Brand Identity - Bloom Co.</h3>
+          <p>Logo, color palette, and brand guidelines</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=440&h=320&fit=crop" alt="Social Media Campaign" class="portfolio-thumb">
+        <div class="portfolio-info">
+          <h3>Social Campaign - FitLife</h3>
+          <p>30-day content strategy &amp; design</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=440&h=320&fit=crop" alt="Website Redesign" class="portfolio-thumb">
+        <div class="portfolio-info">
+          <h3>Website - Artisan Coffee</h3>
+          <p>Full website redesign &amp; content</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="card">
+    <h2>Client Testimonials</h2>
+    <div class="testimonial">
+      <p>"Ella transformed our brand from scratch. Her design skills and attention to detail are incredible. She also managed all our social media, saving us hours every week!"</p>
+      <div class="author">Sarah Johnson</div>
+      <div class="role">Founder, Bloom Co.</div>
+    </div>
+    <div class="testimonial">
+      <p>"I hired Ella as a VA and she quickly became indispensable. She handles my inbox, schedules meetings, and even creates beautiful graphics for my content. Highly recommended!"</p>
+      <div class="author">Mark Chen</div>
+      <div class="role">CEO, TechStart Solutions</div>
+    </div>
+  </section>
+
+  <!-- Contact / Lead Form -->
+  <section id="contact" class="card">
+    <h2>Let's Work Together</h2>
+    <p style="opacity:0.85; margin-bottom:18px;">Ready to get started? Fill out the form below and I'll get back to you within 24 hours.</p>
+
+    <form id="lead-form" name="leads" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <!-- Honeypot for spam protection -->
+      <p style="display:none">
+        <label>Don't fill this out: <input name="bot-field"></label>
+      </p>
+      <input type="hidden" name="form-name" value="leads">
+      <input type="hidden" name="subject" value="New Lead from Portfolio - %{formName}">
+
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" class="form-input" placeholder="e.g. John Smith" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" class="form-input" placeholder="e.g. john@company.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="company">Company / Business</label>
+        <input type="text" id="company" name="company" class="form-input" placeholder="e.g. Acme Inc. (optional)">
+      </div>
+
+      <div class="form-group">
+        <label for="service">Service Needed</label>
+        <select id="service" name="service" class="form-select" required>
+          <option value="" disabled selected>Select a service...</option>
+          <option value="Graphic Design">Graphic Design</option>
+          <option value="Social Media Management">Social Media Management</option>
+          <option value="Virtual Assistant">Virtual Assistant / Admin Support</option>
+          <option value="Customer Service">Customer Service</option>
+          <option value="Branding">Branding &amp; Identity</option>
+          <option value="Content Creation">Content Creation</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="budget">Budget Range</label>
+        <select id="budget" name="budget" class="form-select">
+          <option value="" disabled selected>Select budget range (optional)</option>
+          <option value="Under $500">Under $500</option>
+          <option value="$500 - $1,000">$500 - $1,000</option>
+          <option value="$1,000 - $3,000">$1,000 - $3,000</option>
+          <option value="$3,000+">$3,000+</option>
+          <option value="Ongoing/Retainer">Ongoing / Retainer</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Project Details</label>
+        <textarea id="message" name="message" class="form-textarea" placeholder="Tell me about your project, goals, and timeline..." required></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submit-btn">Send Inquiry</button>
+    </form>
+
+    <div class="success-msg" id="success-msg">
+      <div class="success-icon">&#10024;</div>
+      <h3>Thank you!</h3>
+      <p>Your inquiry has been received. I'll get back to you within 24 hours.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="social-links">
+      <a href="#" aria-label="LinkedIn" title="LinkedIn">in</a>
+      <a href="#" aria-label="Instagram" title="Instagram">ig</a>
+      <a href="#" aria-label="Behance" title="Behance">Be</a>
+      <a href="#" aria-label="Email" title="Email">@</a>
+    </div>
+    <p>&copy; 2026 Ella Reyes. All rights reserved.</p>
+  </footer>
+
+</div>
+
+<script>
+// Dark mode toggle
+function toggleDark() {
+  document.body.classList.toggle('dark');
+  localStorage.setItem('darkMode', document.body.classList.contains('dark'));
+}
+// Restore dark mode preference
+if (localStorage.getItem('darkMode') === 'true') {
+  document.body.classList.add('dark');
+}
+
+// Form submission with AJAX
+const form = document.getElementById('lead-form');
+const submitBtn = document.getElementById('submit-btn');
+const successMsg = document.getElementById('success-msg');
+
+form.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending...';
+
+  try {
+    const response = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
+    });
+
+    if (response.ok) {
+      form.style.display = 'none';
+      successMsg.classList.add('show');
+      form.reset();
+    } else {
+      throw new Error('Submission failed');
+    }
+  } catch (err) {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Send Inquiry';
+    alert('Something went wrong. Please try again or email me directly.');
+  }
+});
+
+// Smooth scrolling for nav links
+document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    var target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
